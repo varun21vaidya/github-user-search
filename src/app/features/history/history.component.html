@@ -1,0 +1,45 @@
+<div class="history-container">
+  <div class="mat-card-box">
+    <h1>Search History</h1>
+  </div>
+  <div *ngIf="searchHistory.length==0" class="centerDiv headers">
+    Search History is Empty !!
+  </div>
+  <div class="div-scroll" *ngIf="searchHistory.length>0">
+    <table class="table-class">
+      <tr class="headers">
+        <th>Search Term</th>
+        <th>Search Results</th>
+      </tr>
+      <tr *ngFor="let history of searchHistory">
+        <td>
+          {{ history.searchTerm }}
+        </td>
+        <td>
+          <mat-card class="history-card">
+            <div *ngIf="!history.success" class="centertext headers"> 
+              Search result not found ! 
+            </div>
+            <button mat-button color="warn" (click)="removeHistory(history)" *ngIf="!history.success">Remove</button>
+            <ng-container *ngIf="history.success">
+              <div class="mat-card-box">
+                <p class="headers">User Image</p>
+                <img mat-card-image [src]="history.avatar_url" alt="User Avatar" class="history-image">
+              </div>
+              <div>
+                <mat-card-content class="centerDiv">
+                  <p class="headers">Github User Name</p>
+                  <p>{{ history.username }}</p>
+                  <button mat-button color="warn" (click)="removeHistory(history)">Remove</button>
+                </mat-card-content>
+              </div>
+            </ng-container>
+          </mat-card>
+        </td>          
+    </tr>
+    </table>
+  </div>
+  <div class="centerDiv" *ngIf="searchHistory.length>0">
+    <button mat-raised-button color="primary" (click)="clearData()">Clear Search Data</button>
+  </div>
+</div>

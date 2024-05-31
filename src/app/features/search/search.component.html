@@ -1,0 +1,38 @@
+<div class="search-container">
+  <mat-card class="search-card">
+    <mat-card-title>Search GitHub Users</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="searchUser()" class="form-class">
+        <mat-form-field appearance="fill">
+          <mat-label>GitHub Username</mat-label>
+          <input matInput [(ngModel)]="username" name="username" class="input-form">
+        </mat-form-field>
+        <button mat-raised-button color="primary">Search</button>
+      </form>
+    </mat-card-content>
+
+    <mat-card *ngIf="checkUser() || loading || errorMessage" class="card-conatiner">
+      <div *ngIf="loading">
+        <mat-spinner color="primary"></mat-spinner>
+      </div>
+      <div *ngIf="errorMessage">
+          User does not exist !
+      </div>
+      <div *ngIf="checkUser()" class="user-card">
+        <div class="mat-card-box">
+          <p class="headers">User Image</p>
+          <img mat-card-image [src]="user.avatar_url" alt="User Avatar" class="user-image">
+        </div>
+        <div>
+          <mat-card-content>
+            <p><span class="headers"><strong>Username:</strong></span> {{ user.login }}</p>
+            <p><span class="headers"><strong>Name:</strong></span> {{ user.name }}</p>
+            <p><span class="headers"><strong>Public Repos:</strong></span> {{user.public_repos }}</p>
+            <p><span class="headers"><strong>Followers:</strong></span> {{ user.followers }}</p>
+            <p><span class="headers"><strong>Following:</strong></span> {{  user.following }}</p>
+          </mat-card-content>
+        </div>
+      </div>
+    </mat-card>
+  </mat-card>
+</div>
