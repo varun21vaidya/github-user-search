@@ -1,4 +1,5 @@
 ### Documentation for Angular GitHub Dashboard Application
+ **Live Link**: https://varun-github-user-search.vercel.app/
 
 #### **Project Overview:**
 This Angular application allows users to search for GitHub profiles, view search history, and display detailed user profiles. It uses Angular framework, Angular Material for UI components. Search results and history are stored in local storage.
