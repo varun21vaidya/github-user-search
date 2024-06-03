@@ -1,4 +1,4 @@
-### Documentation for Angular GitHub Dashboard Application
+### Documentation for Github User Search Application
  **Live Link**: https://varun-github-user-search.vercel.app/
 
 #### **Project Overview:**
